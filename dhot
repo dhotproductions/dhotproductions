@@ -1,0 +1,230 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DHOT PRODUCTIONS: Custom gift shop with personalized mugs, key chains, t-shirts, caps, and more. High-quality prints for every occasion.">
+  <meta name="keywords" content="custom gifts, mugs, key chains, t-shirts, caps, DHOT PRODUCTIONS">
+  <title>DHOT PRODUCTIONS | Custom Gift Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Roboto', Arial, sans-serif; background: #1c1c1c; color: #eee; line-height: 1.6; scroll-behavior: smooth; }
+    .welcome { height: 100vh; background: url('1111.jpg') center/cover no-repeat; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .welcome-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
+    .welcome-content { position: cener; z-index: 1; color: #fff; padding: 20px; max-width: 600px; }
+    .welcome-content h1 { font-size: 35px; margin-bottom: 8px; letter-spacing: 2px; }
+    .welcome-content h2 { font-size: 42px; margin-bottom: 10px; letter-spacing: 2px; }
+    .welcome-content p { font-size: 1.2rem; margin-bottom: 25px; color: #f5a623; }
+    .welcome-btn { background: linear-gradient(135deg, #f5a623, #ffcc70); color: #000; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 30px; margin: 10px; display: inline-block; transition: transform 0.3s; }
+    .welcome-btn:hover { transform: scale(1.05); }
+    header { background: #0f0f0f; color: #fff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #f5a623; position: sticky; top: 0; z-index: 100; }
+    nav { display: flex; gap: 20px; }
+    nav a { color: #fff; text-decoration: none; font-weight: bold; padding: 10px; border-radius: 5px; transition: background 0.3s; }
+    nav a:hover { background: #f5a623; color: #000; }
+    #cart-count { background: #f5a623; color: #000; padding: 2px 8px; border-radius: 50%; font-size: 12px; margin-left: 5px; }
+    .hero { background: linear-gradient(to right, #000, #333); color: #fff; padding: 60px 20px; text-align: center; }
+    .section { padding: 40px 20px; max-width: 1200px; margin: auto; }
+    .section h3 { text-align: center; margin-bottom: 30px; font-size: 2rem; color: #f5a623; }
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .product { background: #111; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.6); border: 1px solid #2a2a2a; transition: transform 0.3s; }
+    .product:hover { transform: translateY(-5px); }
+    .product img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+    .product h4 { margin: 10px 0; color: #fff; }
+    .product p { color: #f5a623; font-weight: bold; }
+    .product button { background: linear-gradient(135deg, #f5a623, #ffcc70); border: none; color: #000; padding: 10px 18px; cursor: pointer; border-radius: 20px; font-weight: bold; margin-top: 10px; transition: background 0.3s; }
+    .product button:hover { background: linear-gradient(135deg, #ffcc70, #f5a623); }
+    .contact { background: #0f0f0f; color: #fff; padding: 40px 20px; text-align: center; border-top: 3px solid #f5a623; }
+    footer { background: #000; color: #aaa; text-align: center; padding: 15px; font-size: 14px; }
+    /* Cart Modal */
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); }
+    .modal-content { background-color: #111; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 10px; }
+    .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+    .close:hover { color: #f5a623; }
+    /* Responsive */
+    @media (max-width: 768px) { .welcome-content h1 { font-size: 2rem; } nav { flex-direction: column; gap: 10px; } .products { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DHOT PRODUCTIONS</h1>
+    <nav>
+      <a href="#welcome">Welcome</a>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#cart" onclick="showCart()">Cart <span id="cart-count">0</span></a>
+      <a href="#login">Login</a>
+      <a href="#wallet">Wallet</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Welcome Page -->
+    <section class="welcome" id="welcome">
+      <div class="welcome-overlay"></div>
+      <div class="welcome-content">
+        <h1>Welcome to</h1>
+        <h2>DHOT PRODUCTIONS</h2>
+        <p>Custom Gifts | Personalized Prints | Premium Designs</p>
+        <a href="#home" class="welcome-btn">Explore Products</a>
+        <a href="#contact" class="welcome-btn">Contact Us</a>
+      </div>
+    </section>
+
+    <!-- Home Page Section -->
+    <section class="hero" id="home">
+      <h2>Custom Gifts for Every Occasion</h2>
+      <p>Personalized mugs, key chains, t-shirts, caps, and more</p>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="products">
+      <h3>Our Products</h3>
+      <div class="products" id="products-grid">
+        <!-- Products will be loaded here via JS -->
+      </div>
+    </section>
+
+    <!-- Login Section (Placeholder) -->
+    <section class="section" id="login" style="display: none;">
+      <h3>Login</h3>
+      <p>Login functionality coming soon! Contact us for custom orders.</p>
+    </section>
+
+    <!-- Wallet Section (Placeholder) -->
+    <section class="section" id="wallet" style="display: none;">
+      <h3>Wallet</h3>
+      <p>Wallet and payment features coming soon!</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h3>Contact Us</h3>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/917347690766" target="_blank" style="color:#f5a623;">+91-7347690766</a></p>
+      <p><strong>Gmail:</strong> <a href="mailto:dhotproductions@gmail.com" style="color:#f5a623;">dhotproductions@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 DHOT PRODUCTIONS. All Rights Reserved.
+  </footer>
+
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCart()">&times;</span>
+      <h3>Your Cart</h3>
+      <div id="cart-items"></div>
+      <p>Total: ₹<span id="cart-total">0</span></p>
+      <button onclick="checkout()">Checkout via WhatsApp</button>
+      <button onclick="clearCart()">Clear Cart</button>
+    </div>
+  </div>
+
+  <script>
+    // Product Data (All 33 items as listed)
+    const products = [
+      { name: "White Mug", price: 250, img: "https://photos.google.com/photo/AF1QipMrAcDBlkpldUoG6pOT3Qy4KyZMELq0iw7ZDGI1.jpg" },
+      { name: "Red Inner Mug", price: 350, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/red inner.jpg" },
+      { name: "Orange Inner Mug", price: 350, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/orange.jpg" },
+      { name: "Black Inner Mug", price: 350, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/black.jpg"},
+      { name: "Yellow Inner Mug", price: 350, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/yellow.jpg" },
+      { name: "Blue Inner Mug", price: 350, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/blue.jpg" },
+      { name: "Black Inner Heart Handle Mug", price: 400, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/black heart.jpg" },
+      { name: "Red Inner Heart Handle Mug", price: 400, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/red heart.jpg" },
+      { name: "Black Magic Mug", price: 450, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/magic mug.jpg" },
+      { name: "Inner Heart Cut Black Magic Mug", price: 500, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/heart cut magic mug.jpg" },
+      { name: "750 ML Sipper Bottle", price: 400, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/sipper.jpg" },
+      { name: "Acrylic Key Chain (Square)", price: 80, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/Square.jpg" },
+      { name: "Acrylic Key Chain (Rectangle)", price: 80, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/Rectangle.jpg" },
+      { name: "Acrylic Key Chain (Heart)", price: 80, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/heart.jpg" },
+      { name: "Acrylic Key Chain (Instagram)", price: 80, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/INSTA.jpg" },
+      { name: "Acrylic Key Chain (Round)", price: 80, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/round.jpg" },
+      { name: "Acrylic Key Chain (apple)", price: 80, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/apple.jpg" },
+      { name: "Punjab Printed White T-Shirt", price: 299, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/PUNJAB PRINT.jpg" },
+      { name: "Punjab Map with Gurmukhi Alphabet T-Shirt", price: 499, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/PUNJAB MAP.jpg" },
+      { name: "Majestic Eagle & Punjab Print T-Shirt", price: 369, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/punjab egel.jpg" },
+      { name: "Blade Symbol Punjab T-Shirt", price: 349, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/BLADE SYMBOL.jpg" },
+      { name: "Sikh Graphic Nirbho Nirvar T-Shirt", price: 349, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/nir 1.jpg" },
+      { name: "Shiv / Har Har Mahadev T-Shirt", price: 349, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/shi ss.jpg" },
+      { name: "Demon slayer", price: 349, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/demon.jpg" },
+      { name: "Black Panther", price: 349, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/PANTHER.jpg" },
+      { name: "Venom Groot", price: 349, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/VENOM GROOT.jpg" },
+      { name: "Tom & Jerry", price: 349, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/tom.jpg" },
+      { name: "White Cap (Custom Print)", price: 249, img: "C:/Users/harsh/OneDrive/Desktop/WEB SITE/cap.jpg" }
+    ];
+
+    // Load Products
+    const productsGrid = document.getElementById('products-grid');
+    products.forEach((product, index) => {
+      const productDiv = document.createElement('div');
+      productDiv.className = 'product';
+      productDiv.innerHTML = `
+        <img src="${product.img}" alt="${product.name}">
+        <h4>${product.name}</h4>
+        <p>Price: ₹${product.price}</p>
+        <button onclick="addToCart(${index})">Add to Cart</button>
+      `;
+      productsGrid.appendChild(productDiv);
+    });
+
+    // Cart Functionality
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCart();
+
+    function addToCart(index) {
+      cart.push(products[index]);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCart();
+      alert(`${products[index].name} added to cart!`);
+    }
+
+    function updateCart() {
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+
+    function showCart() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = cart.length ? cart.map((item, i) => `<p>${item.name} - ₹${item.price} <button onclick="removeFromCart(${i})">Remove</button></p>`).join('') : '<p>Cart is empty.</p>';
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      document.getElementById('cart-total').textContent = total;
+      document.getElementById('cart-modal').style.display = 'block';
+    }
+
+    function closeCart() {
+      document.getElementById('cart-modal').style.display = 'none';
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCart();
+      showCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      localStorage.removeItem('cart');
+      updateCart();
+      showCart();
+    }
+
+    function checkout() {
+      const message = `Order Details:\n${cart.map(item => `${item.name} - ₹${item.price}`).join('\n')}\nTotal: ₹${document.getElementById('cart-total').textContent}`;
+      window.open(`https://wa.me/917347690766?text=${encodeURIComponent(message)}`, '_blank');
+      clearCart();
+      closeCart();
+    }
+
+    // Show sections on nav click
+    document.querySelector('a[href="#login"]').addEventListener('click', () => {
+      document.getElementById('login').style.display = 'block';
+      document.getElementById('login').scrollIntoView();
+    });
+    document.querySelector('a[href="#wallet"]').addEventListener('click', () => {
+      document.getElementById('wallet').style.display = 'block';
+      document.getElementById('wallet').scrollIntoView();
+    });
+  </script>
+</body>
+</html>
